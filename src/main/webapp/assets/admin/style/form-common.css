@@ -1,0 +1,27 @@
+/* 
+ * Form Validate Style
+ * Author : daybreak
+ * Blog : hpboys.com
+ */
+.form-info,.form-error,.form-success,.form-warnning {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background: url(../image/validate/form-icon-small.png);
+    background-position: -40px -20px;
+    margin: 0px 5px 0px 5px;
+    vertical-align: middle;
+}
+.form-info{
+    background-position: 0px -60px;
+}
+.form-error {
+    background-position: -20px -40px;
+}
+.form-success {
+    background-position: -40px -20px;
+}
+.form-warnning {
+    background-position: -20px -40px;
+}
+

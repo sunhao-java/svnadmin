@@ -1,0 +1,54 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="svnadmin:war exploded">
+    <output-path>$PROJECT_DIR$/target/svnadmin</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="svnadmin" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax:javaee-api:7.0" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:servlet-api:6.0.37" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:jsp-api:6.0.37" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:el-api:6.0.37" />
+          <element id="library" level="project" name="Maven: org.tmatesoft.svnkit:svnkit:1.7.6" />
+          <element id="library" level="project" name="Maven: org.tmatesoft.sqljet:sqljet:1.1.5" />
+          <element id="library" level="project" name="Maven: org.antlr:antlr-runtime:3.4" />
+          <element id="library" level="project" name="Maven: de.regnis.q.sequence:sequence-library:1.0.2" />
+          <element id="library" level="project" name="Maven: net.java.dev.jna:jna:3.4.0" />
+          <element id="library" level="project" name="Maven: com.trilead:trilead-ssh2:1.0.0-build215" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.6.8" />
+          <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.6" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.5" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.0.1" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.14" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="H:\Code\Team\jsvnadmin\target/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="svnadmin/web/Web" />
+    </root>
+  </artifact>
+</component>

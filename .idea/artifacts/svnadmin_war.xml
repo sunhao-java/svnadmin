@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="svnadmin:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="svnadmin.war">
+      <element id="artifact" artifact-name="svnadmin:war exploded" />
+    </root>
+  </artifact>
+</component>
