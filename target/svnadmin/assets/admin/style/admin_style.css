@@ -1,0 +1,143 @@
+@CHARSET "UTF-8";
+*{
+    outline: none;
+}
+body {
+    width: 100%;
+    min-width: 1076px;
+    overflow-x: auto
+}
+/* 覆盖皮肤样式 */
+body, body.full-height-layout #page-wrapper, body.full-height-layout #wrapper, html {
+    height: 98%;
+}
+.table tbody td{
+    font-size: 14px;
+}
+.wrapper-content {
+    min-height: 500px;
+}
+
+.qry-form {
+    margin: 10px 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.list-margin {
+    margin: 20px 0px;
+}
+
+.box-align-center {
+    margin: 0px auto;
+}
+
+/* common width */
+.w150 {
+    width: 150px;
+    min-width: 150px !important;
+}
+.w100 {
+    width: 100px;
+    min-width: 100px !important;
+}
+
+
+/* margin common style */
+.margin-top-mid {
+    margin-top: 15px;
+}
+
+.margin-top-larger {
+    margin-top: 25px;
+}
+
+.marggin-left-mid {
+    margin-left: 15px;
+}
+
+.margin-bottom-empty {
+    margin-bottom: 0px !important;
+}
+/* display */
+.hide{
+    display: none;
+}
+
+/* float */
+.clear-float {
+    float: none;
+}
+
+.clear-overflow {
+    overflow-x: inherit;
+}
+
+.usr-select-box{
+    margin: 10px auto;
+    height: 300px;
+    padding: 0 0 0 140px;
+}
+.usr-select-box .ibox{
+    border: 1px solid #ECECEC;
+    height: 310px;
+}
+.usr-select-box .usr-list{
+    height: 240px;
+    overflow: auto;
+    padding: 0 5px 0 0;
+}
+.usr-select-box .col-sm-2{
+    text-align: center;
+}
+.usr-select-box .col-sm-2 #submitBtn{
+    margin: 175px 0 0 0;
+}
+.usr-select-box .usr-list li.selected{
+    border: 1px solid #23c6c8;
+    border-left: 3px solid #23c6c8;
+}
+/*.usr-select-box .usr-list li.selected:after {*/
+    /*content: "";*/
+/*}*/
+.repository .row .ibox{
+    border:1px solid #ECECEC;
+}
+.repository .row .ibox-content{
+    min-height: 600px;
+}
+.repository .filetree span.file{
+    margin-bottom: 0px;
+    border: none;
+}
+.rep-auth-form input[type=text],.rep-auth-form select{
+    border:1px solid #ECECEC;
+    height: 35px;
+    font-size: 14px;
+    padding:0 0 0 5px;
+    transition: padding 0.25s;
+}
+.rep-auth-form input[type=text]:focus{
+    border: 1px solid #1AB394;
+}
+.rep-auth-form select option{
+    height: 30px;
+    padding: 5px;
+}
+.rep-auth-form select[multiple='multiple']{
+    padding:5px 0 5px 5px;
+}
+.rep-auth-form input[type=button]{
+    margin: 2px 7px;
+    width: 35px;
+    border: 1px solid #d2d2d2;
+    border-radius: 3px;
+    background: #F3F3F4;
+}
+.rep-auth-form input[type=button]:hover{
+    background: #E8E8E8;
+}
+
+

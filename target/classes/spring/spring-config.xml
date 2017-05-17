@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 注解驱动 -->
+    <mvc:annotation-driven />
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="org.svnadmin"/>
+    <!-- proxy-target-class默认"false",更改为"ture"使用CGLib动态代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="false" />
+    <!-- 将静态资源的处理经由spring MVC框架交回Web应用服务器处理 -->
+    <!--<mvc:default-servlet-handler />-->
+    <mvc:resources mapping="/assets/**" location="/assets/" />
+
+    <!-- 读入配置属性文件 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:setting.properties</value>
+                <value>classpath*:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 读入配置属性文件 -->
+    <bean class="org.svnadmin.util.place.SystemPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:setting.properties</value>
+                <value>classpath*:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${${db}.jdbc.driver}"/>
+        <property name="url" value="${${db}.jdbc.url}"/>
+        <property name="username" value="${${db}.jdbc.username}"/>
+        <property name="password" value="${${db}.jdbc.password}"/>
+
+        <property name="poolPreparedStatements" value="false"/>
+        <property name="defaultAutoCommit" value="false"/>
+
+        <property name="initialSize" value="5"/>
+        <property name="maxActive" value="100"/>
+        <property name="maxIdle" value="20"/>
+        <property name="minIdle" value="3"/>
+        <property name="maxWait" value="50000"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedTimeout" value="180"/>
+
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="true"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/>
+        <property name="numTestsPerEvictionRun" value="100"/>
+        <property name="validationQuery" value="${${db}.jdbc.validationQuery}"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="springUtils" class="org.svnadmin.common.util.SpringUtils" lazy-init="false"/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass">
+            <value>org.springframework.web.servlet.view.JstlView</value>
+        </property>
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+    <!--@RequestBody输出格式转换 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                    <property name="objectMapper" ref="simpleDateFormatMapper" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <!-- 静态资源处理 -->
+            <mvc:exclude-mapping path="/assets/**"/>
+            <bean class="org.svnadmin.util.interceptor.AdminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
