@@ -1,4 +1,4 @@
-﻿# Host: hpboys.com  (Version: 5.6.34-log)
+# Host: hpboys.com  (Version: 5.6.34-log)
 # Date: 2017-05-17 13:27:22
 # Generator: MySQL-Front 5.3  (Build 2.42)
 
@@ -17,7 +17,7 @@
 
 DROP DATABASE IF EXISTS `svnadmin`;
 CREATE DATABASE `svnadmin` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `svnadmin_temp`;
+USE `svnadmin`;
 
 #
 # Source for table "i18n"
