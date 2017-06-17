@@ -67,10 +67,11 @@
                                                         <li>
                                                             <a href="javascript:void(0)" onclick="location.href='repository?pj=${item.pj}';" class="font-bold">设置权限</a>
                                                         </li>
-                                                        <li class="divider"></li>
+                                                        <!-- <li class="divider"></li>
                                                         <li>
                                                             <a href="javascript:void(0)" data-id="{{item.id}}" class="font-bold text-danger">删除</a>
                                                         </li>
+                                                        -->
                                                     </ul>
                                                     </div>
                                                 </td>
