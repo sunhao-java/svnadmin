@@ -54,6 +54,11 @@
                                                 <td>${item.des}</td>
                                                 <td>
                                                     <div class="btn-group">
+                                                        <button class="btn btn-primary btn-sm" type="button" onclick="location.href='pjUsrList?pj=${item.pj}';"><i class="fa fa-user"></i> 用户</button>
+                                                        <button class="btn btn-success btn-sm" type="button" onclick="location.href='pjGrList?pj=${item.pj}';"><i class="fa fa-users"></i> 用户组</button>
+                                                        <button class="btn btn-warning btn-sm" type="button" onclick="location.href='repository?pj=${item.pj}';"><i class="fa fa-unlock-alt"></i> 权限</button>
+                                                    </div>
+                                                   <%-- <div class="btn-group">
                                                         <button data-toggle="dropdown" class="btn btn-info btn-xs dropdown-toggle"
                                                                 aria-expanded="false">操作 <span class="caret"></span>
                                                         </button>
@@ -73,7 +78,7 @@
                                                         </li>
                                                         -->
                                                     </ul>
-                                                    </div>
+                                                    </div>--%>
                                                 </td>
                                             </tr>
                                         </c:forEach>
