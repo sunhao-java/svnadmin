@@ -50,13 +50,18 @@ public class LoginController extends BaseController{
     public Object loginHandler(HttpServletRequest request,
                                @RequestParam("usr")String usr,
                                @RequestParam("psw")String psw){
+        Usr loginUser = null;
         //登录
-        Usr loginUser = usrService.login(usr, psw);
-        if (null == loginUser) {
-            return pushMsg("用户名或密码错误！", false);
+        try {
+            loginUser = usrService.login(usr, psw);
+            if (null == loginUser) {
+                return pushMsg("用户名或密码错误！", false);
+            }
+        }catch (Exception ex){
+            return pushMsg(ex.getMessage(), false);
         }
-        request.getSession().setAttribute(SessionConstant.USER_SESSION_KEY,loginUser);
-        return pushMsg("认证通过", true , "url" , "pjList");
+        request.getSession().setAttribute(SessionConstant.USER_SESSION_KEY, loginUser);
+        return pushMsg("认证通过", true , "url" , "console");
     }
 
     /**

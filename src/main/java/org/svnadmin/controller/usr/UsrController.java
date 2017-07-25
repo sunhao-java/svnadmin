@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.svnadmin.common.annotation.AdminAuthPassport;
 import org.svnadmin.common.entity.PageBean;
+import org.svnadmin.common.util.HttpUtils;
 import org.svnadmin.common.web.BaseController;
 import org.svnadmin.entity.Pj;
 import org.svnadmin.entity.PjAuth;
+import org.svnadmin.entity.PjUsr;
 import org.svnadmin.service.PjService;
+import org.svnadmin.service.PjUsrService;
 import org.svnadmin.service.UsrService;
 import org.svnadmin.entity.Usr;
 import org.svnadmin.util.EncryptUtil;
 import org.svnadmin.util.I18N;
 import org.svnadmin.util.SessionUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * SVN用户管理控制器
@@ -36,6 +41,8 @@ public class UsrController extends BaseController {
     private UsrService usrService;
     @Autowired
     private PjService pjService;
+    @Autowired
+    private PjUsrService pjUsrService;
 
     /**
      * 用户列表
@@ -120,5 +127,62 @@ public class UsrController extends BaseController {
     }
 
 
+    /**
+     * 查看用户权限
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "usrRightListView", method = RequestMethod.GET)
+    public String usrRightListDataSet(HttpSession session) {
+        //查看用户权限
+        return "usr/usr_auth";
+    }
+
+    /**
+     * 用户更改密码
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "updatePswd", method = RequestMethod.GET)
+    public String updatePswd(HttpSession session, ModelMap map) {
+        return "usr/usr_update_pswd";
+    }
+
+    /**
+     * 用户更改密码处理
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "usrUpdatePswdHandler", method = RequestMethod.POST)
+    @ResponseBody
+    public Object pjUsrAddHandler(HttpServletRequest request) {
+        Usr usr = SessionUtils.getLogedUser(request.getSession());
+        Map<String, String> params = HttpUtils.getParams(request);
+        //验证老密码和新密码
+        String oldPsw = params.get("oldPsw");
+        if(usr.getPsw().equals(EncryptUtil.encrypt(oldPsw))){
+            //验证老密码通过
+            //验证老密码和新密码是否一致
+            String newPsw = params.get("newPsw");
+            if(usr.getPsw().equals(EncryptUtil.encrypt(newPsw))){
+                return pushMsg("新密码不能和老密码保持一致", false);
+            }
+            //更新用户登录密码
+            usr.setPsw(EncryptUtil.encrypt(newPsw));
+            usrService.save(usr);
+            //更新用户项目认证密码
+            List<Pj> pjList = usrService.getPjList(usr.getUsr());
+            for (Pj pj : pjList) {
+                PjUsr pjUsr = new PjUsr();
+                pjUsr.setUsr(usr.getUsr());
+                pjUsr.setPj(pj.getPj());
+                pjUsr.setPsw(EncryptUtil.encrypt(newPsw));
+                pjUsrService.save(pjUsr);
+            }
+            return pushMsg("用户项目认证密码修改成功", true);
+        }else{
+            return pushMsg("您输入的老密码有误", false);
+        }
+    }
 
 }

@@ -165,7 +165,7 @@ public class UsrService {
 	 *            用户
 	 * @return 用户的项目
 	 */
-	private List<Pj> getPjList(String usr) {
+	public List<Pj> getPjList(String usr) {
 		List<Pj> list = this.pjDao.getList(usr);// 用户可以看到的所有项目
 		// 如果项目使用http(多库)，只返回一个项目就可以，SvnService导出时，会导出所有相同svn root的项目
 		List<Pj> results = new ArrayList<Pj>();
@@ -225,10 +225,10 @@ public class UsrService {
 		// 正常登录
 		Usr entity = this.get(usr);
 		if (entity == null) {
-			throw new RuntimeException(I18N.getLbl("login.error.notfoundusr", "不存在用户{0} ",new Object[]{usr}));
+			throw new RuntimeException(I18N.getLbl("login.error.notfoundusr", "系统不存在用户{0} ",new Object[]{usr}));
 		}
 		if (!entity.getPsw().equals(EncryptUtil.encrypt(psw))) {
-			throw new RuntimeException(I18N.getLbl("login.error.wrongpassword", "密码错误 "));
+			throw new RuntimeException(I18N.getLbl("login.error.wrongpassword", "用户名或密码有误 "));
 		}
 		return entity;
 	}

@@ -41,16 +41,14 @@ public class ProjectController extends BaseController {
      */
     @RequestMapping(value = "pjList", method = RequestMethod.GET)
     public String pjList(HttpSession session, ModelMap map) {
-//        boolean hasAdminRight = SessionUtils.hasAdminRight(session);
-//        List<Pj> list = null;
-//        if (hasAdminRight) {
-//            list = pjService.list();// 所有项目
-//        }
-//        else {
-//            list = pjService.list(SessionUtils.getLogedUser(session).getUsr());// 登录用户可以看到的项目
-//        }
+        boolean hasAdminRight = SessionUtils.hasAdminRight(session);
         List<Pj> list = null;
-        list = pjService.list();// 所有项目
+        if (hasAdminRight) {
+            list = pjService.list();// 所有项目
+        }
+        else {
+            list = pjService.list(SessionUtils.getLogedUser(session).getUsr());// 登录用户可以看到的项目
+        }
         PageBean<Pj> pageBean = new PageBean<Pj>();
         pageBean.setRecordCount(list.size());
         pageBean.setDataList(list);
