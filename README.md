@@ -34,7 +34,6 @@
 
 ```
 svnserve -d -r D:\svn
-
 ```
 你的访问路径将是这样的：
 svn://localhost/demo
