@@ -8,6 +8,10 @@
 - 用户权限查看，密码更改；
 - SVN仓库支持多库模式；
 
+> 获取老司机的带路：
+
+<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=58dddb7a869c97060a2c96fb4eb658d4a50d2a108caaa1eef5dafbf94d1e09b3" rel="nofollow noreferrer noopener"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="SVN管理系统-交流群" title="SVN管理系统-交流群"></a>
+
 
 > 一、使用源码开发部署步骤：
 1. 下载项目源码；
@@ -18,7 +22,7 @@
 
 
 > 二、使用部署包直接部署步骤：
-1. 下载最新部署包（[点此下载](http://hpboys.qiniudn.com//download/svnadmin.war)）；
+1. 下载最新部署包（[点此下载](http://hpboys.qiniudn.com/download/svnadmin.war)）；
 1. 找到文件 sql\svnadmin_init.sql 进行执行初始化；
 1. 配置数据库连接信息，配置文件位置：WEB-INF/classes/jdbc.properties
 1. 部署到tomcat等Web容器中即可；环境推荐JDK1.8 / Tomcat8
@@ -34,7 +38,6 @@
 
 ```
 svnserve -d -r D:\svn
-
 ```
 你的访问路径将是这样的：
 svn://localhost/demo
