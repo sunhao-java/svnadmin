@@ -14,10 +14,10 @@ import org.tree.entity.TreeNode;
  * 抽象树节点服务层
  * @author <a href="mailto:yuanhuiwu@gmail.com">Huiwu Yuan</a>
  * @since 3.0.2
- * 
+ *
  */
 public abstract class AbstractTreeNodeService implements TreeNodeService {
-	
+
 	public StringBuffer getHTML(Tree tree, Map<String, Object> parameters) {
 		StringBuffer html = new StringBuffer();
 		List<TreeNode> nodes = getTreeNodes(tree, parameters);
@@ -30,7 +30,7 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 
 			// htmlsrc
 			html.append("<li");
-			
+
 			if (this.isLeaf(tree,treeNode)) {// 叶子
 				if(i == nodes.size() -1){//last
 					this.prepareAttribute(html, "class","last");
@@ -74,10 +74,10 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 				}
 			}
 			// end otherAttributes
-			
+
 			// end <li>
 			html.append(" >");
-			
+
 			// span
 			if (this.isLeaf(tree,treeNode)) {
 				html.append("<span class='file'>");
@@ -109,7 +109,8 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 	 * @param parameters 参数
 	 * @return 子节点
 	 */
-	protected abstract List<TreeNode> getTreeNodes(Tree parent,Map<String, Object> parameters);
+	@Override
+	public abstract List<TreeNode> getTreeNodes(Tree parent,Map<String, Object> parameters);
 
 	/**
 	 * 处理参数
@@ -119,14 +120,14 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 	protected void prepareParameters(StringBuffer handlers,Map<String, Object> params) {
 		if (params == null)
 			return;
-		
+
 		StringBuffer result = new StringBuffer();
 	    Iterator<String> iterKeys = params.keySet().iterator();
 	    int count =0;
 	    while(iterKeys.hasNext()){
 	      if(count >0)result.append("&amp;");
 	      count ++;
-	      
+
 	      String key = iterKeys.next();
 	      Object value =params.get(key);
 	      if(value != null){
@@ -147,7 +148,7 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 	      }else{
 	    	  result.append(key).append("=");
 	      }
-	      
+
 	    }
 		if(result.length()>0){
 			this.prepareAttribute(handlers, "param", result.toString());
@@ -157,7 +158,7 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 	/**
 	 * Prepares an attribute if the value is not null, appending it to the the
 	 * given StringBuffer.
-	 * 
+	 *
 	 * @param handlers
 	 *            The StringBuffer that output will be appended to.
 	 * @param name 属性名称
@@ -173,7 +174,7 @@ public abstract class AbstractTreeNodeService implements TreeNodeService {
 			handlers.append("\"");
 		}
 	}
-	
+
 	/**
 	 * @param tree 树
 	 * @param treeNode 节点

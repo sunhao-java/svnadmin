@@ -47,7 +47,7 @@ public class RepTreeNodeService extends AbstractTreeNodeService {
 	RepositoryService repositoryService;
 	
 	@Override
-	protected List<TreeNode> getTreeNodes(Tree parent,
+	public List<TreeNode> getTreeNodes(Tree parent,
 			Map<String, Object> parameters) {
 		List<TreeNode> results = new ArrayList<TreeNode>();
 		
@@ -85,7 +85,6 @@ public class RepTreeNodeService extends AbstractTreeNodeService {
 			Collections.sort(results);// 排序
 		} catch (Exception e) {
     		LOG.error(e.getMessage());
-			e.printStackTrace();
 			
     		results.clear();
     		TreeNode errorNode = new TreeNode(e.getMessage());

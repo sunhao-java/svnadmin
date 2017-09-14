@@ -4,6 +4,9 @@ var AjaxTreeView = {
         ontoggle: null,//function(o,b) when toggle folder.o:li,b:is open
         onclick: null,//function(o,a) when click text.o: li;a:a
         url: "ajaxTreeService.ajax",//ajax load url
+        intercept: function(data){
+            return data;
+        },
         attrs: ["treeId", "treeParentId"]
     },
 
@@ -74,6 +77,9 @@ var AjaxTreeView = {
         var pa = AjaxTreeView.getParams(o);
         $.post(AjaxTreeView.config.url, pa,
             function (d) {
+                if(AjaxTreeView.config.intercept){
+                    d = AjaxTreeView.config.intercept(d);
+                }
                 if (d.length > 0) {
                     //$(o.children[o.children.length-1]).after(d);//not good
                     $o.append(d);
@@ -99,6 +105,7 @@ var AjaxTreeView = {
         }
         var p = o.getAttribute("param");//eg a=1&b=2
         if (p != null && p != "") {
+            p = decodeURIComponent(p);
             var ar = p.split("&");
             for (var j = 0; j < ar.length; j++) {
                 var nvr = ar[j].split("=");
