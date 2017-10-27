@@ -3,6 +3,7 @@
 #### 致力于成为一个安全流畅，极简可靠的SVN管理工具
 （这不是SVN服务器，它的职责是帮你方便的管理SVN服务以下功能）
 > 主要功能 
+- 支持用户现有SVN项目导入，一键迁移；
 - SVN仓库创建，管理；
 - SVN用户，用户组创建，管理；
 - SVN资源权限授权；
@@ -23,7 +24,7 @@
 
 
 > 二、使用部署包直接部署步骤：
-1. 下载最新部署包V1.1（[点此下载](http://hpboys.qiniudn.com/download/svnadmin/v1.1/svnadmin.war)）；
+1. 下载最新部署包V4.0.0（[点此下载](https://gitee.com/hpboys/svnadmin/releases/4.0.0)）；
 1. 找到文件 sql\svnadmin_init.sql 进行执行初始化；
 1. 配置数据库连接信息，配置文件位置：WEB-INF/classes/jdbc.properties
 1. 部署到tomcat等Web容器中即可；环境推荐JDK1.8 / Tomcat8
