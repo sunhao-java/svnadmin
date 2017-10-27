@@ -17,7 +17,7 @@
 				</li>
 
 				<li>
-					<a aria-expanded="false" role="button" href="pjCreate"> 创建项目</a>
+					<a aria-expanded="false" role="button" href="pjCreate?type=new"> 创建项目</a>
 				</li>
 				<li>
 					<a aria-expanded="false" role="button" href="usrList"> 用户管理</a>
@@ -30,6 +30,11 @@
 				<li>
 					<a aria-expanded="false" role="button" href="updatePswd"> 修改密码</a>
 				</li>
+
+				<li>
+					<a aria-expanded="false" role="button" target="_blank" href="https://gitee.com/hpboys/svnadmin"> 获取帮助</a>
+				</li>
+
 			</ul>
 			<ul class="nav navbar-top-links navbar-right">
 				<li>

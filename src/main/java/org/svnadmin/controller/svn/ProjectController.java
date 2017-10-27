@@ -16,6 +16,7 @@ import org.svnadmin.service.PjService;
 import org.svnadmin.service.UsrService;
 import org.svnadmin.util.SessionUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -71,12 +72,14 @@ public class ProjectController extends BaseController {
 
     /**
      * 创建项目
-     * @param session
+     * @param request
      * @return
      */
     @AdminAuthPassport
     @RequestMapping(value = "pjCreate", method = RequestMethod.GET)
-    public String pjCreate(HttpSession session, ModelMap map) {
+    public String pjCreate(HttpServletRequest request, ModelMap map,
+                           @RequestParam(defaultValue = "new") String type) {
+        map.put("type", type);
         return "svn/pj_create";
     }
 
@@ -88,13 +91,17 @@ public class ProjectController extends BaseController {
     @AdminAuthPassport
     @RequestMapping(value = "pjCreateHandler", method = RequestMethod.POST)
     @ResponseBody
-    public Object pjCreateHandler(HttpSession session,Pj entity) {
+    public Object pjCreateHandler(HttpSession session,Pj entity,
+                                  @RequestParam(defaultValue = "new") String addType) {
+
+        String typeMsg = addType.equals("new")? "创建": "导入现有";
+
         try {
-            pjService.save(entity);
-            return pushMsg("创建项目成功", true , "url" , "pjList");
+            pjService.save(entity, addType);
+            return pushMsg(typeMsg + "项目成功", true , "url" , "pjList");
         }catch (Exception e){
-            logger.error("创建项目提交失败",e);
-            return pushMsg("创建项目失败，"+e.getMessage(), true);
+            logger.error(typeMsg + "项目提交失败",e);
+            return pushMsg(typeMsg + "项目失败，"+e.getMessage(), true);
         }
     }
 

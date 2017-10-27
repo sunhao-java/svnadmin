@@ -127,7 +127,7 @@ public class PjService {
 	 *            项目
 	 */
 	@Transactional
-	public void save(Pj pj) {
+	public void save(Pj pj, String type) {
 		// 路径 把\替换为/
 		if (StringUtils.isNotBlank(pj.getPath())) {
 			pj.setPath(StringUtils.replace(pj.getPath(), "\\", "/"));
@@ -150,11 +150,15 @@ public class PjService {
 				throw new RuntimeException(I18N.getLbl("pj.save.error.existMutilPathOrUrl","数据库里已经存在多个相同的路径或url的仓库项目，请检查路径或url"));
 			}
 		}
-		// 创建仓库
-		File respository = new File(pj.getPath());
-		if (!respository.exists() || !respository.isDirectory()) {// 不存在仓库
-			RepositoryService.createLocalRepository(respository);
+		// 创建项目
+		if("new".equals(type)){
+			// 创建仓库
+			File respository = new File(pj.getPath());
+			if (!respository.exists() || !respository.isDirectory()) {// 不存在仓库
+				RepositoryService.createLocalRepository(respository);
+			}
 		}
+
 		if (insert) {
 			// 增加默认的组
 			this.pjDao.insert(pj);
@@ -176,7 +180,10 @@ public class PjService {
 		} else {
 			this.pjDao.update(pj);
 		}
-		svnService.exportConfig(pj.getPj());
+		// 创建项目
+		if("new".equals(type)){
+			svnService.exportConfig(pj.getPj());
+		}
 	}
 	
 	/**

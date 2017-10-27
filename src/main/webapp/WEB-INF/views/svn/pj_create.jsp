@@ -18,7 +18,12 @@
                 <div class="row list-margin">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>创建项目</h5>
+                            <c:if test="${type =='new'}">
+                                <h5>创建项目</h5>
+                            </c:if>
+                            <c:if test="${type == 'old'}">
+                                <h5>导入现有项目</h5>
+                            </c:if>
                         </div>
                         <div class="ibox-content">
                             <!-- 查询表单 -->
@@ -71,6 +76,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label"></label>
                                         <div class="col-sm-4 col-sm-offset-2">
+                                            <input type="hidden" name="addType" value="${type}">
                                             <button class="btn btn-primary" type="submit">创建</button>
                                             <button class="btn btn-white" type="reset">重置</button>
                                         </div>

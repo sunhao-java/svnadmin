@@ -49,7 +49,7 @@
 	</div>
 	<div class="signup-footer">
 		<div class="pull-left">
-			&copy; 2016 All Rights Reserved. 破晓科技有限公司
+			&copy; 2017 All Rights Reserved. 破晓科技有限公司
 		</div>
 	</div>
 </div>

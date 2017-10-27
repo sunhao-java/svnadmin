@@ -24,7 +24,8 @@
                             <c:if test="${'admin' == adminUser.role}">
                             <div class="row">
                                 <div class="qry-form">
-                                    <button type="button" class="btn btn-primary btn-sm margin-bottom-empty" onclick="location='pjCreate';" id="qryBtn">+ 创建项目</button>
+                                    <button type="button" class="btn btn-primary btn-sm margin-bottom-empty" onclick="location='pjCreate?type=new';" id="qryBtn"><i class="fa fa-plus"></i> 创建项目</button>
+                                    <button type="button" class="btn btn-info btn-sm margin-bottom-empty" onclick="location='pjCreate?type=old';" id="importBtn"><i class="fa fa-mail-forward"></i> 导入现有项目</button>
                                 </div>
                             </div>
                             </c:if>
