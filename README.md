@@ -24,8 +24,8 @@
 
 
 > 二、使用部署包直接部署步骤：
-1. 下载最新部署包V4.0.0（[点此下载](https://gitee.com/hpboys/svnadmin/releases/4.0.0)）；
-1. 找到文件 sql\svnadmin_init.sql 进行执行初始化；
+1. 下载最新部署包V4.1.0（[点此下载](https://gitee.com/hpboys/svnadmin/releases/v4.1.0)）；
+1. 找到文件 src\test\resources\sql\svnadmin_init.sql 进行执行初始化；
 1. 配置数据库连接信息，配置文件位置：WEB-INF/classes/jdbc.properties
 1. 部署到tomcat等Web容器中即可；环境推荐JDK1.8 / Tomcat8
 1. 默认root账户：root/root
