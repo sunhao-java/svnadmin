@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.svnadmin.common.annotation.AdminAuthPassport;
 import org.svnadmin.common.entity.PageBean;
 import org.svnadmin.common.util.HttpUtils;
 import org.svnadmin.common.web.BaseController;
@@ -76,6 +77,7 @@ public class RepController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repository", method = RequestMethod.GET)
     public String repository (HttpSession session,
                               @RequestParam("pj") String _pj, ModelMap map) {
@@ -93,6 +95,7 @@ public class RepController extends BaseController {
      * @param request
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repTree", method = RequestMethod.POST, params = "action=data")
     @ResponseBody
     public Object repTree (HttpServletRequest request) {
@@ -103,13 +106,13 @@ public class RepController extends BaseController {
         return ajax.getResult();
     }
 
-
     /**
      * 加载项目资源树数据
      *
      * @param request
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repTreeLoad", method = RequestMethod.POST, params = "action=data")
     @ResponseBody
     public Object repTreeLoad (HttpServletRequest request) {
@@ -152,6 +155,7 @@ public class RepController extends BaseController {
      * @param request
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repPathAuth", method = RequestMethod.GET, params = "action=data")
     @ResponseBody
     public Object repPathAuth (HttpServletRequest request) {
@@ -180,6 +184,7 @@ public class RepController extends BaseController {
      * @param request
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repPathAuthAddHandler", method = RequestMethod.POST)
     @ResponseBody
     public Object pjCreateHandler (HttpServletRequest request) {
@@ -205,6 +210,7 @@ public class RepController extends BaseController {
      * @param request
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "repPathAuthRemoveHandler", method = RequestMethod.POST)
     @ResponseBody
     public Object repPathAuthRemoveHandler (HttpServletRequest request) {

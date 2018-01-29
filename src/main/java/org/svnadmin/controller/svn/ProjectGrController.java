@@ -47,6 +47,7 @@ public class ProjectGrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjGrList", method = RequestMethod.GET)
     public String pjGrList(HttpSession session,@RequestParam("pj")String pj, ModelMap map) {
         map.put("pj", pjService.get(pj));
@@ -58,6 +59,7 @@ public class ProjectGrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjGrList", method = RequestMethod.GET, params = "action=data")
     @ResponseBody
     public Object pjGrList(HttpSession session,@RequestParam("pj")String pj) {

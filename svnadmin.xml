@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="svnadmin" default="all">
+  
+  
+  <property file="svnadmin.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_cglib:cglib-nodep:2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml:classmate:1.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.trilead:trilead-ssh2:1.0.0-build215.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/trilead/trilead-ssh2/1.0.0-build215/trilead-ssh2-1.0.0-build215.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-io:commons-io:2.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-io/commons-io/2.0.1/commons-io-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-lang:commons-lang:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-pool:commons-pool:1.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-pool/commons-pool/1.5.5/commons-pool-1.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.regnis.q.sequence:sequence-library:1.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/de/regnis/q/sequence/sequence-library/1.0.2/sequence-library-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.activation:activation:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:1.1.0.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax:javaee-api:7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/javaee-api/7.0/javaee-api-7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_jstl:jstl:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/jstl/jstl/1.2/jstl-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_log4j:log4j:1.2.16.classpath">
+    <pathelement location="${path.variable.maven_repository}/log4j/log4j/1.2.16/log4j-1.2.16.jar"/>
+  </path>
+  
+  <path id="library.maven:_mysql:mysql-connector-java:5.1.14.classpath">
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.14/mysql-connector-java-5.1.14.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.java.dev.jna:jna:3.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/java/dev/jna/jna/3.4.0/jna-3.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.antlr:antlr-runtime:3.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/antlr/antlr-runtime/3.4/antlr-runtime-3.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/geronimo/specs/geronimo-annotation_1.0_spec/1.1.1/geronimo-annotation_1.0_spec-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat:el-api:6.0.37.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/el-api/6.0.37/el-api-6.0.37.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat:jsp-api:6.0.37.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/jsp-api/6.0.37/jsp-api-6.0.37.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat:servlet-api:6.0.37.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/servlet-api/6.0.37/servlet-api-6.0.37.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjweaver:1.6.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.6.8/aspectjweaver-1.6.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-validator:5.2.4.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging:3.2.1.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.2.1.Final/jboss-logging-3.2.1.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.2.18.RELEASE/spring-aop-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.2.18.RELEASE/spring-beans-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.2.18.RELEASE/spring-context-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.2.18.RELEASE/spring-core-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.2.18.RELEASE/spring-expression-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jdbc:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.2.18.RELEASE/spring-jdbc-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-orm:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/3.2.18.RELEASE/spring-orm-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-tx:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/3.2.18.RELEASE/spring-tx-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-web:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-web/3.2.18.RELEASE/spring-web-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-webmvc:3.2.18.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc/3.2.18.RELEASE/spring-webmvc-3.2.18.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.tmatesoft.sqljet:sqljet:1.1.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/tmatesoft/sqljet/sqljet/1.1.5/sqljet-1.1.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.tmatesoft.svnkit:svnkit:1.7.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/tmatesoft/svnkit/svnkit/1.7.6/svnkit-1.7.6.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  
+  <!-- Application Server Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_svnadmin.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.svnadmin, clean.artifact.svnadmin:war_exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.svnadmin" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.svnadmin:war" value="${basedir}/target"/>
+    <property name="artifact.output.svnadmin:war_exploded" value="${basedir}/target/svnadmin"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.svnadmin.war" value="${artifacts.temp.dir}/svnadmin.war"/>
+  </target>
+  
+  <target name="clean.artifact.svnadmin:war_exploded" description="clean svnadmin:war exploded artifact output">
+    <delete dir="${artifact.output.svnadmin:war_exploded}"/>
+  </target>
+  
+  <target name="artifact.svnadmin:war" depends="init.artifacts, artifact.svnadmin:war_exploded" description="Build &#39;svnadmin:war&#39; artifact">
+    <property name="artifact.temp.output.svnadmin:war" value="${artifacts.temp.dir}/svnadmin_war"/>
+    <mkdir dir="${artifact.temp.output.svnadmin:war}"/>
+    <zip destfile="${temp.jar.path.svnadmin.war}">
+      <zipfileset dir="${artifact.output.svnadmin:war_exploded}"/>
+    </zip>
+    <copy file="${temp.jar.path.svnadmin.war}" tofile="${artifact.temp.output.svnadmin:war}/svnadmin.war"/>
+  </target>
+  
+  <target name="artifact.svnadmin:war_exploded" depends="init.artifacts, compile.module.svnadmin" description="Build &#39;svnadmin:war exploded&#39; artifact">
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}"/>
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.svnadmin:war_exploded}/WEB-INF/classes">
+      <fileset dir="${svnadmin.output.dir}"/>
+    </copy>
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib"/>
+    <copy file="${path.variable.maven_repository}/javax/javaee-api/7.0/javaee-api-7.0.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/javaee-api-7.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/javax.mail-1.5.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/activation/activation/1.1/activation-1.1.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/activation-1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/jstl/jstl/1.2/jstl-1.2.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jstl-1.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tomcat/servlet-api/6.0.37/servlet-api-6.0.37.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/servlet-api-6.0.37.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tomcat/jsp-api/6.0.37/jsp-api-6.0.37.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jsp-api-6.0.37.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/tomcat/el-api/6.0.37/el-api-6.0.37.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/el-api-6.0.37.jar"/>
+    <copy file="${path.variable.maven_repository}/org/tmatesoft/svnkit/svnkit/1.7.6/svnkit-1.7.6.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/svnkit-1.7.6.jar"/>
+    <copy file="${path.variable.maven_repository}/org/tmatesoft/sqljet/sqljet/1.1.5/sqljet-1.1.5.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/sqljet-1.1.5.jar"/>
+    <copy file="${path.variable.maven_repository}/org/antlr/antlr-runtime/3.4/antlr-runtime-3.4.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/antlr-runtime-3.4.jar"/>
+    <copy file="${path.variable.maven_repository}/de/regnis/q/sequence/sequence-library/1.0.2/sequence-library-1.0.2.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/sequence-library-1.0.2.jar"/>
+    <copy file="${path.variable.maven_repository}/net/java/dev/jna/jna/3.4.0/jna-3.4.0.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jna-3.4.0.jar"/>
+    <copy file="${path.variable.maven_repository}/com/trilead/trilead-ssh2/1.0.0-build215/trilead-ssh2-1.0.0-build215.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/trilead-ssh2-1.0.0-build215.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-core/3.2.18.RELEASE/spring-core-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-core-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-beans/3.2.18.RELEASE/spring-beans-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-beans-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-context/3.2.18.RELEASE/spring-context-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-context-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-expression/3.2.18.RELEASE/spring-expression-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-expression-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/apache/geronimo/specs/geronimo-annotation_1.0_spec/1.1.1/geronimo-annotation_1.0_spec-1.1.1.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/geronimo-annotation_1.0_spec-1.1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-aop/3.2.18.RELEASE/spring-aop-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-aop-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/aopalliance-1.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.6.8/aspectjweaver-1.6.8.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/aspectjweaver-1.6.8.jar"/>
+    <copy file="${path.variable.maven_repository}/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/cglib-nodep-2.2.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-orm/3.2.18.RELEASE/spring-orm-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-orm-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-tx/3.2.18.RELEASE/spring-tx-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-tx-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-web/3.2.18.RELEASE/spring-web-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-web-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-webmvc/3.2.18.RELEASE/spring-webmvc-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-webmvc-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-jdbc/3.2.18.RELEASE/spring-jdbc-3.2.18.RELEASE.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/spring-jdbc-3.2.18.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
+    <copy file="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jackson-core-asl-1.9.13.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/commons-lang-2.6.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-dbcp/commons-dbcp/1.4/commons-dbcp-1.4.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/commons-dbcp-1.4.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-pool/commons-pool/1.5.5/commons-pool-1.5.5.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/commons-pool-1.5.5.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-io/commons-io/2.0.1/commons-io-2.0.1.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/commons-io-2.0.1.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/log4j/log4j/1.2.16/log4j-1.2.16.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/log4j-1.2.16.jar"/>
+    <copy file="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.14/mysql-connector-java-5.1.14.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/mysql-connector-java-5.1.14.jar"/>
+    <copy file="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/hibernate-validator-5.2.4.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.2.1.Final/jboss-logging-3.2.1.Final.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/jboss-logging-3.2.1.Final.jar"/>
+    <copy file="${path.variable.maven_repository}/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/lib/classmate-1.1.0.jar"/>
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}/META-INF"/>
+    <copy file="${basedir}/target/svnadmin/META-INF/MANIFEST.MF" tofile="${artifact.output.svnadmin:war_exploded}/META-INF/MANIFEST.MF"/>
+    <copy todir="${artifact.output.svnadmin:war_exploded}">
+      <fileset dir="${basedir}/src/main/webapp"/>
+    </copy>
+    <mkdir dir="${artifact.output.svnadmin:war_exploded}/WEB-INF"/>
+    <copy file="${basedir}/src/main/webapp/WEB-INF/web.xml" tofile="${artifact.output.svnadmin:war_exploded}/WEB-INF/web.xml"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.svnadmin:war, artifact.svnadmin:war_exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.svnadmin:war}"/>
+    <copy todir="${artifact.output.svnadmin:war}">
+      <fileset dir="${artifact.temp.output.svnadmin:war}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

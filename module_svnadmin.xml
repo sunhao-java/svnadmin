@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_svnadmin" default="compile.module.svnadmin">
+  <dirname property="module.svnadmin.basedir" file="${ant.file.module_svnadmin}"/>
+  
+  <property name="module.jdk.home.svnadmin" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.svnadmin" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.svnadmin" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.svnadmin" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="svnadmin.output.dir" value="${module.svnadmin.basedir}/target/classes"/>
+  <property name="svnadmin.testoutput.dir" value="${module.svnadmin.basedir}/target/test-classes"/>
+  
+  <path id="svnadmin.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="svnadmin.module.production.classpath">
+    <path refid="${module.jdk.classpath.svnadmin}"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:servlet-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:jsp-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:el-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.svnkit:svnkit:1.7.6.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.sqljet:sqljet:1.1.5.classpath"/>
+    <path refid="library.maven:_org.antlr:antlr-runtime:3.4.classpath"/>
+    <path refid="library.maven:_de.regnis.q.sequence:sequence-library:1.0.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:3.4.0.classpath"/>
+    <path refid="library.maven:_com.trilead:trilead-ssh2:1.0.0-build215.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.18.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.6.8.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.5.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.4.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.2.1.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+  </path>
+  
+  <path id="svnadmin.runtime.production.module.classpath">
+    <pathelement location="${svnadmin.output.dir}"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:servlet-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:jsp-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:el-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.svnkit:svnkit:1.7.6.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.sqljet:sqljet:1.1.5.classpath"/>
+    <path refid="library.maven:_org.antlr:antlr-runtime:3.4.classpath"/>
+    <path refid="library.maven:_de.regnis.q.sequence:sequence-library:1.0.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:3.4.0.classpath"/>
+    <path refid="library.maven:_com.trilead:trilead-ssh2:1.0.0-build215.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.18.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.6.8.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.5.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.14.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.4.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.2.1.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+  </path>
+  
+  <path id="svnadmin.module.classpath">
+    <path refid="${module.jdk.classpath.svnadmin}"/>
+    <pathelement location="${svnadmin.output.dir}"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:servlet-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:jsp-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:el-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.svnkit:svnkit:1.7.6.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.sqljet:sqljet:1.1.5.classpath"/>
+    <path refid="library.maven:_org.antlr:antlr-runtime:3.4.classpath"/>
+    <path refid="library.maven:_de.regnis.q.sequence:sequence-library:1.0.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:3.4.0.classpath"/>
+    <path refid="library.maven:_com.trilead:trilead-ssh2:1.0.0-build215.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.18.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.6.8.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.5.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.14.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.4.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.2.1.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+  </path>
+  
+  <path id="svnadmin.runtime.module.classpath">
+    <pathelement location="${svnadmin.testoutput.dir}"/>
+    <pathelement location="${svnadmin.output.dir}"/>
+    <path refid="library.maven:_javax:javaee-api:7.0.classpath"/>
+    <path refid="library.maven:_com.sun.mail:javax.mail:1.5.0.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:servlet-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:jsp-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat:el-api:6.0.37.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.svnkit:svnkit:1.7.6.classpath"/>
+    <path refid="library.maven:_org.tmatesoft.sqljet:sqljet:1.1.5.classpath"/>
+    <path refid="library.maven:_org.antlr:antlr-runtime:3.4.classpath"/>
+    <path refid="library.maven:_de.regnis.q.sequence:sequence-library:1.0.2.classpath"/>
+    <path refid="library.maven:_net.java.dev.jna:jna:3.4.0.classpath"/>
+    <path refid="library.maven:_com.trilead:trilead-ssh2:1.0.0-build215.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:3.2.18.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.6.8.classpath"/>
+    <path refid="library.maven:_cglib:cglib-nodep:2.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:3.2.18.release.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.5.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.0.1.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.1.1.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.16.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.14.classpath"/>
+    <path refid="library.maven:_org.hibernate:hibernate-validator:5.2.4.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:1.1.0.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.2.1.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.1.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.svnadmin">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.svnadmin">
+    <patternset refid="excluded.from.module.svnadmin"/>
+  </patternset>
+  
+  <path id="svnadmin.module.sourcepath">
+    <dirset dir="${module.svnadmin.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="svnadmin.module.test.sourcepath">
+    <dirset dir="${module.svnadmin.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.svnadmin" depends="compile.module.svnadmin.production,compile.module.svnadmin.tests" description="Compile module svnadmin"/>
+  
+  <target name="compile.module.svnadmin.production" depends="register.custom.compilers" description="Compile module svnadmin; production classes">
+    <mkdir dir="${svnadmin.output.dir}"/>
+    <javac2 destdir="${svnadmin.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.svnadmin}/javac">
+      <compilerarg line="${compiler.args.svnadmin}"/>
+      <bootclasspath refid="svnadmin.module.bootclasspath"/>
+      <classpath refid="svnadmin.module.production.classpath"/>
+      <src refid="svnadmin.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.svnadmin"/>
+    </javac2>
+    
+    <copy todir="${svnadmin.output.dir}">
+      <fileset dir="${module.svnadmin.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.svnadmin.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.svnadmin.tests" depends="register.custom.compilers,compile.module.svnadmin.production" description="compile module svnadmin; test classes" unless="skip.tests">
+    <mkdir dir="${svnadmin.testoutput.dir}"/>
+    <javac2 destdir="${svnadmin.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.svnadmin}/javac">
+      <compilerarg line="${compiler.args.svnadmin}"/>
+      <bootclasspath refid="svnadmin.module.bootclasspath"/>
+      <classpath refid="svnadmin.module.classpath"/>
+      <src refid="svnadmin.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.svnadmin"/>
+    </javac2>
+    
+    <copy todir="${svnadmin.testoutput.dir}">
+      <fileset dir="${module.svnadmin.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.svnadmin.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.svnadmin" description="cleanup module">
+    <delete dir="${svnadmin.output.dir}"/>
+    <delete dir="${svnadmin.testoutput.dir}"/>
+  </target>
+</project>

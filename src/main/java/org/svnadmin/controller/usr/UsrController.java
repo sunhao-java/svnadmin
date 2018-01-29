@@ -49,6 +49,7 @@ public class UsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "usrList", method = RequestMethod.GET)
     public String usrList(HttpSession session, ModelMap map) {
         return "usr/usr_list";
@@ -59,6 +60,7 @@ public class UsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "usrList", method = RequestMethod.GET ,params = "action=data")
     @ResponseBody
     public Object usrListDataSet(HttpSession session) {

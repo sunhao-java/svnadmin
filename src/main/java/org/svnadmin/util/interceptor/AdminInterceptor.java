@@ -1,18 +1,26 @@
 package org.svnadmin.util.interceptor;
 
 import com.trilead.ssh2.Session;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.svnadmin.common.annotation.AdminAuthPassport;
 import org.svnadmin.common.annotation.AuthPassport;
+import org.svnadmin.common.entity.PushMsg;
+import org.svnadmin.common.util.HttpUtils;
 import org.svnadmin.common.util.PropUtils;
 import org.svnadmin.entity.Usr;
+import org.svnadmin.util.JSONUtils;
 import org.svnadmin.util.SessionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 
 /**
@@ -52,8 +60,16 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
         AdminAuthPassport adminAuth = auth.getMethodAnnotation(AdminAuthPassport.class);
         if(null != adminAuth){
             if(!SessionUtils.hasAdminRight(session)){
-                //无权限页面
-                request.getRequestDispatcher("/WEB-INF/views/common/not_auth.jsp").forward(request,response);
+                if(HttpUtils.isAjaxRequest(request)){
+                    PushMsg authMsg = new PushMsg("对不起，你无权访问该功能", false);
+                    PrintWriter writer = response.getWriter();
+                    writer.println(JSONUtils.toJson(authMsg));
+                    writer.flush();
+                    writer.close();
+                }else{
+                    //无权限页面
+                    request.getRequestDispatcher("/WEB-INF/views/common/not_auth.jsp").forward(request,response);
+                }
                 return false;
             }
         }

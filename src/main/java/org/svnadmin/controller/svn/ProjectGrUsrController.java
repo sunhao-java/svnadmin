@@ -50,6 +50,7 @@ public class ProjectGrUsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjGrUsrList", method = RequestMethod.GET)
     public String pjGrUsrList(HttpSession session,
                               @RequestParam("pj")String pj,
@@ -66,6 +67,7 @@ public class ProjectGrUsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjGrUsrList", method = RequestMethod.GET, params = "action=data")
     @ResponseBody
     public Object pjGrUsrList(HttpSession session,

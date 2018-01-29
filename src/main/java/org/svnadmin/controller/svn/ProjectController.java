@@ -40,6 +40,7 @@ public class ProjectController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjList", method = RequestMethod.GET)
     public String pjList(HttpSession session, ModelMap map) {
         boolean hasAdminRight = SessionUtils.hasAdminRight(session);
@@ -62,6 +63,7 @@ public class ProjectController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjList", method = RequestMethod.GET ,params = "action=data")
     @ResponseBody
     public Object pjListDataSet(HttpSession session,@RequestParam("pageNumber")int pageNumber) {

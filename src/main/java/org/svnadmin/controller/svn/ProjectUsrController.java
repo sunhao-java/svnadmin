@@ -48,6 +48,7 @@ public class ProjectUsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjUsrList", method = RequestMethod.GET)
     public String pjUsrList(HttpSession session,@RequestParam("pj")String pj, ModelMap map) {
         // 账户
@@ -62,6 +63,7 @@ public class ProjectUsrController extends BaseController {
      * @param session
      * @return
      */
+    @AdminAuthPassport
     @RequestMapping(value = "pjUsrList", method = RequestMethod.GET, params = "action=data")
     @ResponseBody
     public Object pjUsrList(HttpSession session,@RequestParam("pj")String pj) {
