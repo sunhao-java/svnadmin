@@ -13,14 +13,14 @@
     http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 注解驱动 -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
     <!-- 自动扫描 -->
     <context:component-scan base-package="org.svnadmin"/>
     <!-- proxy-target-class默认"false",更改为"ture"使用CGLib动态代理 -->
-    <aop:aspectj-autoproxy proxy-target-class="false" />
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
     <!-- 将静态资源的处理经由spring MVC框架交回Web应用服务器处理 -->
     <!--<mvc:default-servlet-handler />-->
-    <mvc:resources mapping="/assets/**" location="/assets/" />
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
 
     <!-- 读入配置属性文件 -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -44,10 +44,10 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
-        <property name="driverClassName" value="${${db}.jdbc.driver}"/>
-        <property name="url" value="${${db}.jdbc.url}"/>
-        <property name="username" value="${${db}.jdbc.username}"/>
-        <property name="password" value="${${db}.jdbc.password}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
 
         <property name="poolPreparedStatements" value="false"/>
         <property name="defaultAutoCommit" value="false"/>
@@ -65,7 +65,7 @@
         <property name="testWhileIdle" value="true"/>
         <property name="timeBetweenEvictionRunsMillis" value="30000"/>
         <property name="numTestsPerEvictionRun" value="100"/>
-        <property name="validationQuery" value="${${db}.jdbc.validationQuery}"/>
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
     </bean>
 
     <bean id="transactionManager"
@@ -94,7 +94,7 @@
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-                    <property name="objectMapper" ref="simpleDateFormatMapper" />
+                    <property name="objectMapper" ref="simpleDateFormatMapper"/>
                 </bean>
             </list>
         </property>

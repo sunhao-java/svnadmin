@@ -1,6 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="svnadmin:war">
+  <artifact type="war" name="svnadmin:war">
     <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>svnadmin</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="archive" name="svnadmin.war">
       <element id="artifact" artifact-name="svnadmin:war exploded" />
     </root>
