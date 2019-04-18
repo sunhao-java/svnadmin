@@ -68,25 +68,25 @@
         <property name="validationQuery" value="${jdbc.validationQuery}"/>
     </bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!-- 配置flyway -->
+    <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="locations" value="classpath:META-INF/flyway"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          depends-on="flyway">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven/>
 
     <bean id="springUtils" class="org.svnadmin.common.util.SpringUtils" lazy-init="false"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass">
-            <value>org.springframework.web.servlet.view.JstlView</value>
-        </property>
-        <property name="prefix">
-            <value>/WEB-INF/views/</value>
-        </property>
-        <property name="suffix">
-            <value>.jsp</value>
-        </property>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <!--@RequestBody输出格式转换 -->
