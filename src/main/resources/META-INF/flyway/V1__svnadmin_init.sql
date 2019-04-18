@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 18/04/2019 11:12:01
+ Date: 18/04/2019 13:09:39
 */
 
 SET NAMES utf8mb4;
@@ -354,6 +354,8 @@ VALUES ('zh_CN', 'rep.btn.go', '刷新');
 INSERT INTO `i18n`
 VALUES ('zh_CN', 'svn.auth.error', '认证失败');
 INSERT INTO `i18n`
+VALUES ('zh_CN', 'svn.notFoundResp', '找不到仓库 路径{0}');
+INSERT INTO `i18n`
 VALUES ('zh_CN', 'sys.error', '错误');
 INSERT INTO `i18n`
 VALUES ('zh_CN', 'sys.error.timeout', '超时或未登录');
@@ -503,6 +505,6 @@ CREATE TABLE `usr`
 -- Records of usr
 -- ----------------------------
 INSERT INTO `usr`
-VALUES ('*', '*', NULL, NULL);
-INSERT INTO `usr`
-VALUES ('root', 'cm9vdDEyMw**', NULL, 'admin');
+VALUES ('root', 'cm9vdDEyMw**', '系统管理员', 'admin');
+
+SET FOREIGN_KEY_CHECKS = 1;
