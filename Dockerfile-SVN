@@ -17,4 +17,4 @@ EXPOSE 3690
 VOLUME [ "/var/opt/svn" ]
 WORKDIR /var/opt/svn
 
-RUN apt-get install subversion subversion-tools
+RUN apt-get update && apt-get install -y subversion subversion-tools
