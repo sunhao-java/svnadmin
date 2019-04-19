@@ -22,7 +22,7 @@
         <div class="col-sm-7">
             <div class="signin-info">
                 <div class="logopanel m-b">
-                    <h1><span>[ U+ ]</span></h1>
+                    <h1><span>[ SVN-ADMIN ]</span></h1>
                 </div>
                 <div class="m-b"></div>
                 <h4>欢迎使用<strong>SVN资源管理平台</strong></h4>
