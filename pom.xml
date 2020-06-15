@@ -13,7 +13,7 @@
 		<war.archiveClasses>true</war.archiveClasses>
 
 		<svnkit.version>1.7.6</svnkit.version>
-		<spring.version>3.2.18.RELEASE</spring.version>
+		<spring.version>5.2.7.RELEASE</spring.version>
 		<junit.version>4.8.2</junit.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
