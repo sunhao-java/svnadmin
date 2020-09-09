@@ -36,7 +36,7 @@
 		<jdbc.oracle.version>10.2.0.3.0</jdbc.oracle.version>
 
 		<!-- hibernate验证库版本号 -->
-		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+		<hibernate-validator.version>5.3.6.Final</hibernate-validator.version>
 
 		<flyway.version>4.0.3</flyway.version>
 	</properties>
